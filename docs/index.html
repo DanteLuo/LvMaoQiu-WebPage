@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="floating-particles"></div>
+    <h1 class="glow-text animated-gradient">绿毛球</h1>
+    <p class="fade-in-up">突破音乐边界 · 定义独立新声</p>
+    <div class="scroll-indicator">
+        <span class="mouse">
+            <span class="wheel"></span>
+        </span>
+    </div>
+</section>
+
+<section class="latest-release gradient-bg">
+    <div class="artistic-card">
+        <h2>最新专辑</h2>
+        <div class="album-preview">
+            <img src="{{ url_for('static', filename='images/latest-album.jpg') }}" 
+                 alt="最新专辑" class="hover-zoom">
+            <div class="album-details">
+                <h3>《新专辑名称》</h3>
+                <p class="release-date">2024.03.15 发行</p>
+                <a href="#" class="glow-button">立即聆听</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured-video gradient-bg">
+    <div class="video-container">
+        <div class="artistic-card">
+            <h2>最新现场</h2>
+            <div class="video-wrapper">
+                <video poster="{{ url_for('static', filename='images/live-poster.jpg') }}"
+                       class="hover-effect">
+                    <source src="#" type="video/mp4">
+                </video>
+                <div class="video-overlay">
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="upcoming-events gradient-bg">
+    <div class="events-grid">
+        <div class="artistic-card event-card">
+            <h2>演出预告</h2>
+            <div class="event-date">
+                <span class="day">15</span>
+                <span class="month">MAR</span>
+            </div>
+            <div class="event-details">
+                <h3>春浪音乐节</h3>
+                <p>上海 · 世博公园</p>
+                <a href="#" class="ticket-button">购票</a>
+            </div>
+        </div>
+        <!-- 更多演出信息 -->
+    </div>
+</section>
+
+<script>
+// 添加粒子效果
+document.addEventListener('DOMContentLoaded', function() {
+    const particlesContainer = document.querySelector('.floating-particles');
+    for(let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        particle.style.animationDelay = (Math.random() * 2) + 's';
+        particlesContainer.appendChild(particle);
+    }
+});
+</script>
+
+<style>
+/* 移除之前的 hero 背景样式 */
+.hero {
+    position: relative;
+    padding: 100px 0;
+}
+
+.latest-release,
+.featured-video,
+.upcoming-events {
+    position: relative;
+    max-width: 1200px;  /* 设置最大宽度 */
+    margin: 60px auto;     /* 水平居中 */
+    padding: 40px 20px; /* 添加内边距 */
+    width: 100%;        /* 确保宽度为100% */
+}
+
+/* 移除之前的负margin设置 */
+.latest-release,
+.featured-video,
+.upcoming-events {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.artistic-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    max-width: 800px;   /* 设置卡片最大宽度 */
+    margin: 0 auto;     /* 卡片水平居中 */
+}
+
+.album-preview {
+    display: flex;
+    flex-direction: column;  /* 改为垂直排列 */
+    align-items: center;     /* 内容居中 */
+    gap: 20px;              /* 元素间距 */
+}
+
+.album-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.album-details {
+    text-align: center;     /* 文字居中 */
+}
+
+.animated-gradient {
+    background: linear-gradient(
+        45deg,
+        #ff6b6b,
+        #ffd93d,
+        #6c5ce7,
+        #ff6b6b
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient 8s ease infinite;
+}
+
+.gradient-bg {
+    background: linear-gradient(
+        135deg,
+        rgba(108, 92, 231, 0.1),
+        rgba(255, 107, 107, 0.1),
+        rgba(255, 217, 61, 0.1)
+    );
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+</style>
+{% endblock %} 

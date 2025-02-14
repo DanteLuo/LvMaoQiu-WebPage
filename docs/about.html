@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="band-intro">
+    <h2>关于我们</h2>
+    <div class="section-divider"></div>
+    
+    <div class="member-grid">
+        <!-- 成员1 -->
+        <div class="artistic-card delay-1">
+            <img src="{{ url_for('static', filename='images/member1.jpg') }}" alt="主唱">
+            <h3>主唱：绿小明</h3>
+            <p>负责词曲创作与主唱...</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-douban"></i></a>
+            </div>
+        </div>
+        <!-- ... 其他成员卡片 -->
+    </div>
+    
+    <div class="history-section">
+        <h2>乐队历程</h2>
+        <div class="section-divider"></div>
+        
+        <div class="timeline">
+            <div class="artistic-card delay-2">
+                <h4>2021 · 成立</h4>
+                <p>在上海音乐学院组建...</p>
+            </div>
+            <!-- ... 其他时间节点 -->
+        </div>
+    </div>
+</section>
+
+<style>
+/* 统一标题样式 */
+.band-intro h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;  /* 统一字体大小 */
+    font-weight: bold;
+}
+</style>
+{% endblock %} 
