@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绿毛球乐队</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- 引入Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 添加Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(
+            45deg,
+            #ff4757,
+            #ffa502,
+            #5f27cd,
+            #2ed573
+        );
+        background-size: 400% 400%;
+        animation: globalGradient 15s ease infinite;
+    }
+
+    @keyframes globalGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* 导航栏样式调整 */
+    .main-header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 移除之前的背景色设置 */
+    .band-intro,
+    .discography,
+    .news,
+    .contact {
+        background: none;
+        padding: 3rem 0;
+    }
+
+    /* 内容区域卡片样式 */
+    .section-content {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1200px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 页脚样式调整 */
+    .contact-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 2rem 0;
+        margin-top: 3rem;
+        text-align: center;
+    }
+
+    .contact-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    /* 标题颜色调整 */
+    h2 {
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 分隔线样式调整 */
+    .section-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #4CAF50;  /* 可以根据你的主题色调整 */
+    margin: 0 auto 3rem auto;
+}
+
+    /* 导航链接颜色调整 */
+    .nav-link {
+        color: #ffffff;
+    }
+
+    .nav-link:hover {
+        color: #ffa502;
+    }
+
+    /* 演出按钮样式调整 */
+    .tour-button {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .tour-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar {
+        background: rgba(20, 20, 20, 0.8);  /* 深色半透明背景 */
+        backdrop-filter: blur(10px);         /* 毛玻璃效果 */
+        padding: 1rem 2rem;                  /* 增加内边距 */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);  /* 添加微妙的边框 */
+        height: 50px;
+    }
+
+    .nav-brand img.logo {
+        height: 150px;  /* 增加 logo 高度 */
+        width: auto;   /* 保持宽度自适应以维持比例 */
+        transition: transform 0.3s ease;  /* 添加平滑过渡效果 */
+    }
+
+    .nav-brand img.logo:hover {
+        transform: scale(1.2);  /* 悬停时轻微放大效果 */
+    }
+
+    /* 调整导航链接颜色使其更加醒目 */
+    .navbar a {
+        color: rgba(255, 255, 255, 0.9);  /* 更亮的文字颜色 */
+        font-weight: 500;                 /* 稍微加粗 */
+    }
+
+    .navbar a:hover {
+        color: #fff;  /* 悬停时完全不透明 */
+    }
+
+    /* 汉堡菜单颜色调整 */
+    .nav-toggle span {
+        background-color: rgba(255, 255, 255, 0.9);  /* 更亮的颜色 */
+    }
+    </style>
+</head>
+<body>
+    <!-- 新的导航栏设计 -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='images/green_fuzzy_ball.png') }}" alt="绿毛球" class="logo">
+                </a>
+            </div>
+            
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="/" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-home"></i></span>
+                        <span class="nav-text">首页</span>
+                    </a></li>
+                    <li><a href="/about" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-users"></i></span>
+                        <span class="nav-text">乐队介绍</span>
+                    </a></li>
+                    <li><a href="/works" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-music"></i></span>
+                        <span class="nav-text">作品展示</span>
+                    </a></li>
+                    <li><a href="/news" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                        <span class="nav-text">最新动态</span>
+                    </a></li>
+                </ul>
+
+                <div class="nav-cta">
+                    <a href="#tour" class="tour-button">
+                        <span class="pulse"></span>
+                        演出日程
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="contact-section">
+        <h2>联系我们</h2>
+        <div class="contact-content">
+            <p>邮箱：contact@greenballband.com</p>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-weibo"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-bilibili"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+</body>
+</html> 

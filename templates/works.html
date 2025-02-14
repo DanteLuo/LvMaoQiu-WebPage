@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="discography">
+    <h2 class="section-title">音乐作品</h2>
+    <div class="section-divider"></div>
+    
+    <div class="member-grid">
+        <!-- 专辑卡片 -->
+        <div class="artistic-card delay-1">
+            <div class="album-cover">
+                <img src="{{ url_for('static', filename='images/album1.jpg') }}" alt="绿色启程专辑封面">
+                <div class="album-overlay">
+                    <div class="album-details">
+                        <h3>绿色启程</h3>
+                        <p class="release-date">发行日期: 2024年3月</p>
+                        <div class="song-list">
+                            <a href="#" class="song-link">1. 城市绿洲</a>
+                            <a href="#" class="song-link">2. 春天的微风</a>
+                            <a href="#" class="song-link">3. 生命之树</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-videos">
+        <h2 class="section-title">官方MV</h2>
+        <div class="section-divider"></div>
+        
+        <div class="member-grid">
+            <!-- MV卡片 -->
+            <div class="artistic-card delay-2">
+                <div class="video-container">
+                    <iframe src="//player.bilibili.com/player.html?aid=xxxxx" 
+                            allowfullscreen></iframe>
+                </div>
+                <h3>《城市绿洲》MV</h3>
+                <p class="release-date">2023年12月发布</p>
+                <div class="song-list">
+                    <a href="#" class="song-link">在Bilibili观看</a>
+                    <a href="#" class="song-link">在YouTube观看</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* 使用和乐队介绍页面相同的样式 */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.artistic-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.artistic-card:hover {
+    transform: translateY(-5px);
+}
+
+.artistic-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.artistic-card h3 {
+    margin: 1rem 0;
+    color: #333;
+}
+
+.release-date {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.song-list {
+    text-align: left;
+}
+
+.song-link {
+    display: block;
+    color: #4CAF50;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+}
+
+.song-link:hover {
+    color: #2E7D32;
+}
+
+/* 动画延迟类 */
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+/* 统一标题样式 */
+.section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* 移除之前的单独标题样式 */
+.music-videos h2 {
+    margin-bottom: 1.5rem;
+}
+
+.music-videos {
+    margin-top: 4rem;
+}
+
+/* 专辑封面悬停效果样式 */
+.album-cover {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.album-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.album-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 1.5rem;
+    transition: bottom 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.album-cover:hover .album-overlay {
+    bottom: 0;
+}
+
+.album-details {
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.album-details h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.album-details .song-link {
+    color: white;
+}
+
+.album-details .song-link:hover {
+    color: #4CAF50;
+}
+
+.album-details .release-date {
+    color: #ccc;
+}
+</style>
+{% endblock %} 
